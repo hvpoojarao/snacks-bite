@@ -1,0 +1,403 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, sans-serif;
+
+  background: black;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  color: white;
+}
+
+
+#root {
+  width:100%;
+  max-width:1200px;
+}
+
+
+.app {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+}
+
+
+
+/* HEADER */
+
+.game-header {
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+
+  background:rgba(15,23,42,0.9);
+
+  padding:30px;
+
+  border-radius:20px;
+
+  width:100%;
+  max-width:600px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+
+}
+
+
+.game-header h1 {
+
+  font-size:2.5rem;
+  text-align:center;
+
+}
+
+
+.stats {
+
+  display:flex;
+  gap:30px;
+
+}
+
+
+.stat-item {
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+
+
+.stat-label {
+
+  color:#a1a1aa;
+  font-size:0.9rem;
+
+}
+
+
+.stat-value {
+
+  color:#818cf8;
+  font-size:2rem;
+  font-weight:bold;
+
+}
+
+
+
+/* CARDS */
+
+.cards-grid {
+
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:15px;
+
+  width:100%;
+  max-width:600px;
+
+}
+
+
+
+.card {
+
+  aspect-ratio:1;
+
+  position:relative;
+
+  cursor:pointer;
+
+
+  transform-style:preserve-3d;
+
+  transition:transform 0.6s;
+
+}
+
+
+
+/* THIS DOES THE FLIP */
+
+.card.flipped {
+
+  transform:rotateY(180deg);
+
+}
+
+
+
+
+.card-front,
+.card-back {
+
+  position:absolute;
+
+  width:100%;
+  height:100%;
+
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+
+  border-radius:15px;
+
+
+  backface-visibility:hidden;
+
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+
+  transition:0.3s;
+
+}
+
+
+
+
+
+/* QUESTION SIDE */
+
+.card-front {
+
+  background:linear-gradient(
+          to bottom,
+          #0f172a,
+          #0b0f1a
+  );
+
+
+  color:white;
+
+  font-size:3rem;
+
+  border:2px solid rgba(255,255,255,0.1);
+
+}
+
+
+
+
+/* EMOJI SIDE */
+
+.card-back {
+
+
+  background:#1e1e1e;
+
+
+  font-size:4rem;
+
+
+  border:2px solid rgba(255,255,255,0.1);
+
+
+  transform:rotateY(180deg);
+
+}
+
+
+
+/* HIDE FRONT AFTER FLIP */
+
+.card.flipped .card-front {
+
+  opacity:0;
+
+  pointer-events:none;
+
+}
+
+
+
+/* SHOW BACK */
+
+.card.flipped .card-back {
+
+  opacity:1;
+
+}
+
+
+
+/* HOVER */
+
+.card:hover:not(.flipped) {
+
+  transform:scale(1.05);
+
+}
+
+
+.card:active {
+
+  transform:scale(0.95);
+
+}
+
+
+
+/* MATCHED */
+
+.card.matched {
+
+  pointer-events:none;
+
+}
+
+
+.card.matched .card-back {
+
+  background:rgba(126,211,33,0.2);
+
+  box-shadow:
+          0 0 20px rgba(126,211,33,0.4);
+
+}
+
+
+
+/* WIN MESSAGE */
+
+
+.win-message {
+
+  background:rgba(15,23,42,0.95);
+
+  padding:30px 50px;
+
+  text-align:center;
+
+  border-radius:20px;
+
+}
+
+
+
+.win-message h2 {
+
+  font-size:2rem;
+
+}
+
+
+
+.win-message p {
+
+  color:#a1a1aa;
+
+}
+
+
+
+/* RESPONSIVE */
+
+
+@media(max-width:768px){
+
+
+  .game-header h1 {
+
+    font-size:2rem;
+
+  }
+
+
+  .cards-grid {
+
+    gap:10px;
+
+  }
+
+
+  .card-front {
+
+    font-size:2.5rem;
+
+  }
+
+
+  .card-back {
+
+    font-size:3rem;
+
+  }
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+  .game-header {
+
+    padding:20px;
+
+  }
+
+
+  .game-header h1 {
+
+    font-size:1.5rem;
+
+  }
+
+
+  .card-front {
+
+    font-size:2rem;
+
+  }
+
+
+  .card-back {
+
+    font-size:2.5rem;
+
+  }
+
+
+  .stats {
+
+    gap:20px;
+
+  }
+
+
+  .stat-value {
+
+    font-size:1.5rem;
+
+  }
+
+}
+
+.reset-btn{
+  color:midnightblue;
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 25px;
+}
